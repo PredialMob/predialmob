@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from edificio.models import Edificio, EdificioSistemas
+
+admin.site.register(Edificio)
+admin.site.register(EdificioSistemas)
