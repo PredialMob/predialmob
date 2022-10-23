@@ -58,6 +58,8 @@ class ProcedimentoReferencias(SistemaModel):
 
     class Meta:
         db_table = 'sistema_procedimento_referencias'
+        verbose_name = _('procedimento referência')
+        verbose_name_plural = _('procedimentos referências')
 
 
 class Periodo(SistemaModel):
