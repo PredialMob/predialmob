@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.dispatch import receiver
 from django.utils.translation import gettext as _
+from sorl.thumbnail import ImageField
 
 
 class PmModel(models.Model):
@@ -22,11 +23,17 @@ class PmModelEdificio(PmModel):
         abstract = True
 
 
+def get_user_foto_filename(instance, filename):
+    return 'usuario/' + str(instance.sid) + '/' + filename
+
+
 class Usuario(PmModelEdificio, AbstractUser):
+    foto = ImageField(upload_to=get_user_foto_filename)
 
     class Meta:
         verbose_name = _('usuário')
         verbose_name_plural = _('usuários')
+
 
 @receiver(models.signals.pre_save, sender=Usuario)
 def pre_save_superuser(sender, instance=None, created=False, **kwargs):
