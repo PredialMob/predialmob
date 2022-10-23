@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from core.views import PmTemplateView
 
-# Create your views here.
+
+class DashboardView(PmTemplateView):
+    template_name = 'dashboard/index.html'

@@ -683,7 +683,7 @@ h6,
 /* Margin bottom */
 
 .mb-0 {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
 .mb-1 {
@@ -1920,7 +1920,7 @@ button#page-header-user-dropdown {
 
 .main-title {
     text-transform: capitalize;
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -2401,7 +2401,7 @@ ul.card-list li.custom-label:last-child {
 
 .themesflat-carousel-box .owl-next.disabled::before,
 .themesflat-carousel-box .owl-prev.disabled::before {
-    color: #3C21F7;
+    /*color: #3C21F7;*/
 }
 
 .themesflat-carousel-box .owl-dots {
@@ -3650,6 +3650,10 @@ ul.list-img li {
     padding-left: 85px;
 }
 
+.comment.rep {
+    padding-left: 85px;
+}
+
 .project .comment.rep .left {
     width: 85%;
 }
@@ -3927,7 +3931,7 @@ a.btn.ripple.btn-outline-light.dropdown-toggle.fs-12 {
 }
 
 .custom-calendar {
-    margin-top: 40px;
+    margin-top: 20px;
     box-shadow: 0 10px 20px 0 rgba(196, 200, 208, 0.4);
     border-radius: 20px;
 }

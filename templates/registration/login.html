@@ -13,8 +13,7 @@
   {% translate 'Predial Mob - Login' %}
 {% endblock %}
 
-{% block main_content %}
-  <h2>Log In</h2>
+{% block main %}
   <div>
     <div class="main-content">
       <section class="login">
@@ -22,13 +21,13 @@
           <div class="col-12">
             <div class="box">
               <div class="box-header d-flex justify-content-between">
-                <a href="index.html">{# TODO: Página inicial #}
+                <a href="index.html">{# TODO: Página inicial #2 #}
                   <img src="{% static 'protend/images/logo.png' %}" alt="">
                 </a>
 
                 <div class="action-reg">
                   <h4 class="fs-30">{% translate 'Login' %}</h4>
-                  <a href="new-account.html">{% translate 'Entre com sua conta' %}</a>{# TODO: Criar conta #}
+                  <a href="new-account.html">{% translate 'Entre com sua conta' %}</a>{# TODO: Criar conta #3 #}
                 </div>
 
               </div>
@@ -53,7 +52,7 @@
                         <div class="flex-shrink-0">
                           <div class="">
                             <a href="#"
-                               class="text-muted">{% translate 'Esqueceu sua senha?' %}</a>{# TODO: Esqueceu senha #}
+                               class="text-muted">{% translate 'Esqueceu sua senha?' %}</a>{# TODO: Esqueceu senha #4 #}
                           </div>
                         </div>
                       </div>
@@ -88,7 +87,7 @@
                   <div class="mt-37 text-center">
                     <p class="text-muted mb-0 fs-14">Don't have an account ? <a href="user-login.html"
                                                                                 class="text-primary fw-semibold">
-                      {# TODO: Nova conta #}
+                      {# TODO: Criar conta #3 #}
                       {% translate 'Criar uma conta' %}
                     </a></p>
                   </div>
