@@ -23,8 +23,10 @@ class PmModelEdificio(PmModel):
 
 
 class Usuario(PmModelEdificio, AbstractUser):
-    pass
 
+    class Meta:
+        verbose_name = _('usuário')
+        verbose_name_plural = _('usuários')
 
 @receiver(models.signals.pre_save, sender=Usuario)
 def pre_save_superuser(sender, instance=None, created=False, **kwargs):

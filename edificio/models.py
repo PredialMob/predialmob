@@ -20,5 +20,5 @@ class EdificioSistemas(PmModelEdificio):
 
     class Meta:
         db_table = 'edificio_edificio_sistemas'
-        verbose_name = 'edifício sistema'
-        verbose_name_plural = 'edifícios sistemas'
+        verbose_name = _('edifício sistema')
+        verbose_name_plural = _('edifícios sistemas')
