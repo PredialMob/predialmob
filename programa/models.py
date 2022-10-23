@@ -48,3 +48,7 @@ class ManutencaoArquivo(DescricaoMixin, PmModelEdificio):
 class Situacao(DescricaoMixin, PmModelEdificio):
     aberto = models.BooleanField(default=True)
     cor = models.CharField(max_length=9, default='#888888')
+
+    class Meta:
+        verbose_name = _('situação')
+        verbose_name_plural = _('situações')
