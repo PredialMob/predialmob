@@ -1,0 +1,54 @@
+{% load thumbnail %}
+{% load static %}
+{% load i18n %}
+
+<div class="icon-box {{ card.bg_color }}">
+  {% if card.href %}
+    <a class="create d-flex" href="{{ card.href }}">
+  {% endif %}
+
+  <div class="icon {{ card.bg_icon }}">
+    <i class="{{ card.icon }}"></i>
+  </div>
+
+  <div class="content">
+    <h5 class="title-box">{{ card.titulo }}</h5>
+    <p class="{{ card.p_color }} mb-0 pt-4">{{ card.get_descricao }}</p>
+  </div>
+
+  {% if card.href %}
+    </a>
+  {% endif %}
+
+  {% if card.list %}
+    <div class="notification-list card">
+      <div class="top box-header">
+        <h5>{{ card.list.titulo }}</h5>
+      </div>
+      <div class="pd-1r">
+        <div class="divider"></div>
+      </div>
+      <div class="box-body">
+        <ul class="list">
+          {% for item in card.list %}
+            <li class="d-flex {# no-seen #}">
+              {% thumbnail item.image '47x47' crop='center' as image %}
+                <div class="img-mess">
+                  <img class="mr-14" src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}"
+                       alt="notify">
+                </div>
+              {% endthumbnail %}
+              <div class="info">
+                <a href="{{ item.titulo }}" class="font-w600 mb-0 color-primary">{{ item.titulo }}</a>
+                <p class="pb-0 mb-0 line-h14 mt-6">{{ item.descricao }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="btn-view">
+          <a class="font-w600 h5" href="message.html">{% translate 'Ver todas' %}</a> {# TODO: Notificações #}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
