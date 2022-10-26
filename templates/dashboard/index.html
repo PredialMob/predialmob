@@ -24,10 +24,19 @@
 {% block main_content_extend_class %}dashboard{% endblock %}
 
 {% block main_content %}
-  {% include 'dashboard/row_notificacao.html' %}
-  {% include 'dashboard/row_estatisticas.html' %}
-  <div class="row">
-    {% include 'dashboard/box_linhas_custos.html' with class='col-6 col-sm-12' %}
-    {% include 'dashboard/box_donut_sistemas.html' with class='col-6 col-sm-12' %}
-  </div>
+  {% if view.widget_notificacoes and view.widget_mensagens and view.widget_calendario %}
+    {% include 'dashboard/row_notificacao.html' %}
+  {% endif %}
+
+  {% if perms.dashboard.dash_sistemas %}
+    {% include 'dashboard/row_sistemas_edificio.html' %}
+  {% endif %}
+
+  {% if perms.dashboard.dash_custos and perms.dashboard.dash_sistemas %}
+    <div class="row">
+      {% include 'dashboard/box_linhas_custos.html' with class='col-6 col-sm-12' %}
+
+      {% include 'dashboard/box_donut_sistemas.html' with class='col-6 col-sm-12' %}
+    </div>
+  {% endif %}
 {% endblock %}

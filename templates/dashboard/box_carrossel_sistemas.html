@@ -1,0 +1,53 @@
+{% load static %}
+{% load i18n %}
+
+<div class="box box-carousel">
+  <div class="card-top">
+    <div class="sm-f-wrap d-flex">
+      <h5 class="icon-gold text-white bg-green">G</h5>
+      <a href="project-details.html" class="h5 t-title">{{ sistema.sistema }}</a>
+    </div>
+    {% comment %}
+      <div class="dropdown">
+        <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                  stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
+                  stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
+                  stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_project"><i
+                  class="bx bx-trash"></i> Delete</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_project"><i
+                  class="bx bx-edit mr-5"></i>Edit</a>
+        </div>
+      </div>
+    {% endcomment %}
+  </div>
+  <div class="card-center">
+    <h6 class="font-w400 fs-16">{% translate 'Manutenções realizadas' %}: {{ sistema.manutencoes_fechadas }}/{{ sistema.manutencoes_total }}</h6>
+    <div class="progress skill-progress mb-23" style="height:7px; width: 100%;">
+      <div class="progress-bar bg-primary progress-animated"
+           style="width: {{ sistema.percentual }}%; height:7px;"
+           role="progressbar">
+      </div>
+    </div>
+    <div class="sm-f-wrap d-flex justify-content-between">
+      <ul class="user-list">
+        <li><img src="{% static 'protend/images/avatar/user-1.png' %}" alt="user"></li>
+        <li><img src="{% static 'protend/images/avatar/user-2.png' %}" alt="user"></li>
+        <li><img src="{% static 'protend/images/avatar/user-3.png' %}" alt="user"></li>
+        <li><img src="{% static 'protend/images/avatar/user-4.png' %}" alt="user"></li>
+        <li><img src="{% static 'protend/images/avatar/user-5.png' %}" alt="user"></li>
+      </ul>
+      <ul class="tf-icon-list">
+        <li><a><i class='bx bx-calendar'></i></a></li>
+        <li><a><i class='bx bxs-star'></i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

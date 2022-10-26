@@ -55,3 +55,16 @@ class Notificacao:
         self.descricao = descricao
         self.imagem = imagem
         self.href = href
+
+
+class WidgetSistemaResumo:
+
+    def __init__(self, sistema):
+        self.sistema = sistema
+        self.manutencoes_total = sistema.get_manutencoes_total()
+        self.manutencoes_abertas = sistema.get_manutencoes_abertas()
+        self.manutencoes_fechadas = self.manutencoes_total - self.manutencoes_abertas
+        if self.manutencoes_total == 0:
+            self.percentual = 100
+        else:
+             self.percentual = self.manutencoes_fechadas * 100 / self.manutencoes_total
