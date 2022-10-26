@@ -18,7 +18,7 @@ class Manutencao(ProgramaMixin, PmModelEdificio):
     procedimento = models.ForeignKey(to='sistema.Procedimento', on_delete=models.CASCADE)
 
     def __str__(self):
-        return '% %'.format(self.procedimento.descricao, self.indice)
+        return self.procedimento.descricao + ' ' + str(self.indice)
 
     class Meta:
         verbose_name = _('manutenção')

@@ -8,7 +8,6 @@ from sorl.thumbnail import ImageField
 
 
 class PmModel(models.Model):
-    sid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     alterado_em = models.DateTimeField(auto_now=True)
     criado_em = models.DateTimeField(auto_now_add=True)
 
@@ -17,6 +16,7 @@ class PmModel(models.Model):
 
 
 class PmModelEdificio(PmModel):
+    sid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     edificio = models.ForeignKey(to='edificio.Edificio', on_delete=models.CASCADE, to_field='sid')
 
     class Meta:
@@ -60,3 +60,9 @@ class DescricaoMixin(models.Model):
 
     class Meta:
         abstract = True
+
+
+class SignalsLog(PmModel):
+    classe = models.CharField(max_length=32, null=False, blank=True)
+    exception = models.TextField(null=False, blank=True)
+    json = models.JSONField(null=True, blank=True)
