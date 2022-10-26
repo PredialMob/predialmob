@@ -2,9 +2,25 @@ from django.contrib import admin
 
 from sistema.models import Periodo, Procedimento, ProcedimentoReferencias, Referencia, Responsavel, Sistema
 
-admin.site.register(Sistema)
-admin.site.register(Procedimento)
+
+class ProcedimentoInline(admin.TabularInline):
+    model = Procedimento
+
+
+class SistemaAdmin(admin.ModelAdmin):
+    inlines = [ProcedimentoInline]
+
+
+class ReferenciaInline(admin.TabularInline):
+    model = ProcedimentoReferencias
+
+
+class ProcedimentoAdmin(admin.ModelAdmin):
+    inlines = [ReferenciaInline]
+
+
+admin.site.register(Sistema, SistemaAdmin)
+admin.site.register(Procedimento, ProcedimentoAdmin)
 admin.site.register(Responsavel)
 admin.site.register(Referencia)
-admin.site.register(ProcedimentoReferencias)
 admin.site.register(Periodo)

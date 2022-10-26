@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext as _
 
-from core.models import Usuario
+from core.models import SignalsLog, Usuario
 
 
 class UsuarioAdmin(UserAdmin):
@@ -16,3 +18,6 @@ class UsuarioAdmin(UserAdmin):
     )
 
 admin.site.register(Usuario, UsuarioAdmin)
+admin.site.register(SignalsLog)
+admin.site.register(ContentType)
+admin.site.register(Permission)
