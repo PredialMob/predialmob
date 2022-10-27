@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 
 <div class="sidebar">
@@ -13,6 +14,7 @@
   {% block sidebar_menu %}
     <div class="simlebar-sc" data-simplebar>
       <ul class="sidebar-menu tf">
+
         <li class="sidebar-submenu">
           <a href="index.html" class="sidebar-menu-dropdown current-menu-item">
             <i class='bx bxs-home'></i>
@@ -68,7 +70,6 @@
             </li>
           </ul>
         </li>
-
         <li class="sidebar-submenu">
           <a href="clients.html" class="sidebar-menu-dropdown">
             <i class='bx bxs-user'></i>
@@ -88,50 +89,76 @@
             </li>
           </ul>
         </li>
+
         <li>
-          <a href="board.html">
-            <i class='bx bxs-dashboard'></i>
-            <span>Board</span>
-          </a>
-        </li>
-        <li>
-          <a href="calendar.html">
-            <i class='bx bx-calendar'></i>
-            <span>Calendar</span>
+          <a href="{% url 'index' %}">
+            <i class='bx bxs-home'></i>
+            <span>{% translate 'Página inicial' %}</span>
           </a>
         </li>
 
         <li>
-          <a href="message.html">
-            <i class='bx bxs-message-rounded-detail'></i>
-            <span>Message</span>
+          <a href="{% url 'index' %}">
+            <i class='bx bxs-buildings'></i>
+            <span>{% translate 'Meu edifício' %}</span>
           </a>
         </li>
-        <li class="sidebar-submenu">
-          <a href="chart-apex.html" class="sidebar-menu-dropdown">
-            <i class='bx bxs-component'></i>
-            <span>Components</span>
-            <div class="dropdown-icon"><i class='bx bx-chevron-down'></i></div>
-          </a>
-          <ul class="sidebar-menu sidebar-menu-dropdown-content">
-            <li>
-              <a href="chart-apex.html">
-                Apex Charts
-              </a>
-            </li>
 
-          </ul>
-        </li>
-        <li>
-          <a class="darkmode-toggle" id="darkmode-toggle" onclick="switchTheme()">
-            <div>
-              <i class='bx bx-cog mr-10'></i>
-              <span>darkmode</span>
-            </div>
+        {% comment %}
+          <li>
+            <a href="board.html">
+              <i class='bx bxs-dashboard'></i>
+              <span>Board</span>
+            </a>
+          </li>
+        {% endcomment %}
 
-            <span class="darkmode-switch"></span>
-          </a>
-        </li>
+        {% if perms.core.calendario %}
+          <li>
+            <a href="calendar.html">
+              <i class='bx bx-calendar'></i>
+              <span>{% translate 'Calendário' %}</span>
+            </a>
+          </li>
+        {% endif %}
+
+        {% if perms.core.mensagens %}
+          <li>
+            <a href="message.html">
+              <i class='bx bxs-message-rounded-detail'></i>
+              <span>{% translate 'Mensagens' %}</span>
+            </a>
+          </li>
+        {% endif %}
+
+        {% comment %}
+          <li class="sidebar-submenu">
+            <a href="chart-apex.html" class="sidebar-menu-dropdown">
+              <i class='bx bxs-component'></i>
+              <span>Components</span>
+              <div class="dropdown-icon"><i class='bx bx-chevron-down'></i></div>
+            </a>
+            <ul class="sidebar-menu sidebar-menu-dropdown-content">
+              <li>
+                <a href="chart-apex.html">
+                  Apex Charts
+                </a>
+              </li>
+            </ul>
+          </li>
+        {% endcomment %}
+
+        {% if perms.core.darkmode %}
+          <li>
+            <a class="darkmode-toggle" id="darkmode-toggle" onclick="switchTheme()">
+              <div>
+                <i class='bx bx-cog mr-10'></i>
+                <span>{% translate 'Modo escuro' %}</span>
+              </div>
+              <span class="darkmode-switch"></span>
+            </a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   {% endblock %}
