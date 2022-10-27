@@ -19,9 +19,11 @@ from django.contrib import admin
 from django.urls import include, path
 
 from dashboard.views import DashboardView
+from edificio.views import EdificioDetailView
 
 urlpatterns = [
     path('', DashboardView.as_view(), name='index'),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('edificio/<slug:sid>/', EdificioDetailView.as_view())
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

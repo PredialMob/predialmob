@@ -3960,7 +3960,8 @@ a.btn.ripple.btn-outline-light.dropdown-toggle.fs-12 {
 }
 
 .progress.progress-sm {
-    width: 50px;
+    width: 90%;
+    height: 30%;
 }
 
 

@@ -2,12 +2,13 @@ from core.views import PmTemplateView
 from dashboard.widgets import NotificacoesWidget, MensagensWidget, CalendarioWidget, WidgetSistemaResumo
 
 
-class DashboardView(PmTemplateView):
-    template_name = 'dashboard/index.html'
-
+class NotificationViewMixin:
     widget_notificacoes = NotificacoesWidget()
     widget_mensagens = MensagensWidget()
     widget_calendario = CalendarioWidget()
+
+
+class ListaSistemasMixin:
 
     def get_sistemas(self):
         sistemas = self.request.user.edificio.sistemas.all()
@@ -15,3 +16,7 @@ class DashboardView(PmTemplateView):
         for sistema in sistemas:
             widgets.append(WidgetSistemaResumo(sistema))
         return widgets
+
+
+class DashboardView(PmTemplateView, NotificationViewMixin, ListaSistemasMixin):
+    template_name = 'dashboard/index.html'

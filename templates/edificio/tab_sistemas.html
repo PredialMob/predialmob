@@ -1,0 +1,38 @@
+{% load static %}
+{% load i18n %}
+
+<div class="box-body pl-15 pr-15 pb-20 table-responsive activity mt-10">
+  <table class="table table-vcenter text-nowrap table-bordered dataTable no-footer mw-100"
+         id="task-profile" role="grid">
+    <thead>
+    <tr class="top">
+      <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile"
+          rowspan="1" colspan="1" style="width: 40%;">{% translate 'Sistema' %}
+      </th>
+      <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile"
+          rowspan="1" colspan="1" style="width: 15%;">{% translate 'Início' %}
+      </th>
+      <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile"
+          rowspan="1" colspan="1" style="width: 15%;">{% translate 'Final' %}
+      </th>
+      <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile"
+          rowspan="1" colspan="1" style="width: 30%;">{% translate 'Alcançado' %}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sistema in view.get_sistemas %}
+      <tr class="{% cycle 'odd' 'even' %}">
+        <td>{{ sistema.sistema.nome }}</td>
+        <td>{{ sistema.sistema.inicio }}</td>
+        <td>{{ sistema.sistema.final }}</td>
+        <td>
+          <div class="progress progress-sm" style="height: 10px;">
+            <div class="progress-bar bg-primary" style="width: {{ sistema.percentual }}%;"></div>
+          </div>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>

@@ -25,7 +25,8 @@ class Edificio(PmModel):
 
 class EdificioSistemas(PmModelEdificio):
     sistema = models.ForeignKey(to='sistema.Sistema', on_delete=models.CASCADE)
-    validade = models.DateField()
+    inicio = models.DateField()
+    final = models.DateField()
 
     def __str__(self):
         return self.edificio.nome + ' - ' + self.sistema.nome
