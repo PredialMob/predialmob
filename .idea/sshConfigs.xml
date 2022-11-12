@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="pgi.app.br" id="e330287c-26be-4ad7-a2fb-c669e1df0956" port="22" customName="predialmob@pgi.app.br:22" nameFormat="CUSTOM" username="predialmob" useOpenSSHConfig="true">
+        <option name="customName" value="predialmob@pgi.app.br:22" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

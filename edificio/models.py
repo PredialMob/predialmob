@@ -44,7 +44,7 @@ def pre_save_edificio_sistema(sender, instance=None, created=False, **kwargs):
 
         procedimentos = Procedimento.objects.filter(sistema=instance.sistema)
         for procedimento in procedimentos:
-            datas = procedimento.periodo.get_datas(instance.validade)
+            datas = procedimento.periodo.get_datas(instance.final)
             for i, data in enumerate(datas):
                 Manutencao.objects.create(
                     edificio=instance.edificio,

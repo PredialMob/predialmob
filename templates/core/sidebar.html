@@ -15,6 +15,7 @@
     <div class="simlebar-sc" data-simplebar>
       <ul class="sidebar-menu tf">
 
+      {% comment %}
         <li class="sidebar-submenu">
           <a href="index.html" class="sidebar-menu-dropdown current-menu-item">
             <i class='bx bxs-home'></i>
@@ -46,6 +47,9 @@
             </li>
           </ul>
         </li>
+       {% endcomment %}
+            {% comment %}
+
         <li class="sidebar-submenu">
           <a href="project.html" class="sidebar-menu-dropdown">
             <i class='bx bxs-bolt'></i>
@@ -70,6 +74,10 @@
             </li>
           </ul>
         </li>
+             {% endcomment %}
+
+
+{% comment %}
         <li class="sidebar-submenu">
           <a href="clients.html" class="sidebar-menu-dropdown">
             <i class='bx bxs-user'></i>
@@ -90,6 +98,7 @@
           </ul>
         </li>
 
+{% endcomment %}
         <li>
           <a href="{% url 'index' %}">
             <i class='bx bxs-home'></i>
@@ -98,11 +107,20 @@
         </li>
 
         <li>
+          <a href="{% url 'admin:index' %}">
+            <i class='bx bx-cog mr-10'></i>
+            <span>{% translate 'Administração' %}</span>
+          </a>
+        </li>
+      {% comment %}
+
+        <li>
           <a href="{% url 'index' %}">
             <i class='bx bxs-buildings'></i>
             <span>{% translate 'Meu edifício' %}</span>
           </a>
-        </li>
+        </li>       {% endcomment %}
+
 
         {% comment %}
           <li>
@@ -113,6 +131,7 @@
           </li>
         {% endcomment %}
 
+      {% comment %}
         {% if perms.core.calendario %}
           <li>
             <a href="calendar.html">
@@ -130,6 +149,7 @@
             </a>
           </li>
         {% endif %}
+      {% endcomment %}
 
         {% comment %}
           <li class="sidebar-submenu">

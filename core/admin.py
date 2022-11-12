@@ -2,9 +2,12 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from core.models import SignalsLog, Usuario
+
+admin.site.site_header = _('Predial Mob')
+admin.site.site_title = _('Administrativo')
 
 
 class UsuarioAdmin(UserAdmin):

@@ -65,6 +65,6 @@ class WidgetSistemaResumo:
         self.manutencoes_abertas = sistema.get_manutencoes_abertas()
         self.manutencoes_fechadas = self.manutencoes_total - self.manutencoes_abertas
         if self.manutencoes_total == 0:
-            self.percentual = 100
+            self.percentual = '100'
         else:
-             self.percentual = self.manutencoes_fechadas * 100 / self.manutencoes_total
+             self.percentual = '%.0f' % (self.manutencoes_fechadas * 100 / self.manutencoes_total)

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="45cc255f-deb5-4459-abce-97ec95fa65dd" name="predialmob">
+        <fileTransfer rootFolder="/home/predialmob" accessType="SFTP" host="pgi.app.br" port="22" sshConfigId="e330287c-26be-4ad7-a2fb-c669e1df0956" sshConfig="predialmob@pgi.app.br:22">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="04f107c4-81fa-4ece-993b-87915825dfd3" name="root">
+        <fileTransfer accessType="SFTP" host="pgi.app.br" port="22" sshConfigId="54c0d75c-18ca-44db-ae2e-eed1db7c3125" sshConfig="root@pgi.app.br:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

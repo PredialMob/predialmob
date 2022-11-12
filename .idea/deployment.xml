@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="predialmob" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="predialmob">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/.idea" />
+            <excludedPath local="true" path="$PROJECT_DIR$/db.sqlite3" />
+            <excludedPath path="/.cache" />
+            <excludedPath path="/.bash_logout" />
+            <excludedPath path="/.bashrc" />
+            <excludedPath path="/.profile" />
+            <excludedPath path="/.sudo_as_admin_successful" />
+            <excludedPath local="true" path="$PROJECT_DIR$/media" />
+            <excludedPath local="true" path="$PROJECT_DIR$/env" />
+            <excludedPath path="/predialmob/__pycache__" />
+            <excludedPath path="/edificio/__pycache__" />
+            <excludedPath path="/dashboard/__pycache__" />
+            <excludedPath path="/core/__pycache__" />
+            <excludedPath path="/config/__pycache__" />
+            <excludedPath path="/.local" />
+            <excludedPath path="/env" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="root">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

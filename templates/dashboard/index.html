@@ -29,6 +29,7 @@
     {% include 'dashboard/row_sistemas_edificio.html' %}
   {% endif %}
 
+  {% comment %}
   {% if perms.dashboard.dash_custos and perms.dashboard.dash_sistemas %}
     <div class="row">
       {% include 'dashboard/box_linhas_custos.html' with class='col-6 col-sm-12' %}
@@ -36,4 +37,5 @@
       {% include 'dashboard/box_donut_sistemas.html' with class='col-6 col-sm-12' %}
     </div>
   {% endif %}
+  {% endcomment %}
 {% endblock %}
