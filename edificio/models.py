@@ -1,5 +1,4 @@
 import uuid
-import json
 
 from django.db import models
 from django.dispatch import receiver
@@ -33,27 +32,49 @@ class EdificioSistemas(PmModelEdificio):
 
     class Meta:
         db_table = 'edificio_edificio_sistemas'
-        verbose_name = _('edifício sistema')
-        verbose_name_plural = _('edifícios sistemas')
+        verbose_name = _('sistema do edifício')
+        verbose_name_plural = _('sistemas do edifício')
+        unique_together = ['sistema', 'edificio']
 
 @receiver(models.signals.post_save, sender=EdificioSistemas)
-def pre_save_edificio_sistema(sender, instance=None, created=False, **kwargs):
-    try:
-        if not created:
-            return
+def post_save_edificio_sistema(sender, instance=None, created=False, **kwargs):
+    if not created:
+        return
 
-        procedimentos = Procedimento.objects.filter(sistema=instance.sistema)
-        for procedimento in procedimentos:
-            datas = procedimento.periodo.get_datas(instance.final)
-            for i, data in enumerate(datas):
-                Manutencao.objects.create(
-                    edificio=instance.edificio,
-                    sistema_edificio=instance,
-                    procedimento=procedimento,
-                    situacao=ConfigEdificio.get_config().situacao_criacao_manutencao,
-                    indice=i + 1,
-                    data=data,
-                )
-    except ImportError as e:
-        from core.models import SignalsLog
-        SignalsLog.objects.create(classe=type(e), exception=str(e), json=json.dumps(instance))
+    procedimentos = Procedimento.objects.filter(sistema=instance.sistema)
+    for procedimento in procedimentos:
+        EdificioProcedimento.objects.create(
+            edificio=instance.edificio, sistema=instance.sistema, procedimento=procedimento, ativo=False,
+        )
+
+
+class EdificioProcedimento(PmModelEdificio):
+    sistema = models.ForeignKey(to='sistema.Sistema', on_delete=models.CASCADE)
+    procedimento = models.ForeignKey(to='sistema.Procedimento', on_delete=models.CASCADE)
+    ativo = models.BooleanField()
+
+    def __str__(self):
+        return ''
+
+    class Meta:
+        db_table = 'edificio_edificio_procedimento'
+        verbose_name = _('procedimento do edifício')
+        verbose_name_plural = _('procedimentos do edifício')
+
+@receiver(models.signals.post_save, sender=EdificioProcedimento)
+def post_save_edificio_procedimento(sender, instance=None, created=None, **kwargs):
+    if not instance.ativo:
+        return
+
+    edificio_sistema = EdificioSistemas.objects.get(edificio=instance.edificio, sistema=instance.sistema)
+
+    situacao_criacao_manutencao = ConfigEdificio.get_config().situacao_criacao_manutencao
+    datas = instance.procedimento.periodo.get_datas(edificio_sistema.inicio, edificio_sistema.final)
+    for i, data in enumerate(datas):
+        Manutencao.objects.create(
+            edificio=instance.edificio,
+            edificio_procedimento=instance,
+            situacao=situacao_criacao_manutencao,
+            indice=i + 1,
+            data=data,
+        )

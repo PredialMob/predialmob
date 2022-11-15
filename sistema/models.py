@@ -85,10 +85,10 @@ class Periodo(PmModel):
             return data + relativedelta(years=self.periodo)
         return data
 
-    def get_datas(self, validade):
+    def get_datas(self, inicio, final):
         datas = []
-        data = self.get_proxima_data(date.today())
-        while data <= validade:
+        data = self.get_proxima_data(inicio)
+        while data <= final:
             datas.append(data)
             data = self.get_proxima_data(data)
         return datas

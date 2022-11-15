@@ -13,10 +13,12 @@ class SistemaAdmin(admin.ModelAdmin):
 
 class ReferenciaInline(admin.TabularInline):
     model = ProcedimentoReferencias
+    extra = 1
 
 
 class ProcedimentoAdmin(admin.ModelAdmin):
     inlines = [ReferenciaInline]
+    raw_id_fields = ['sistema']
 
 
 admin.site.register(Sistema, SistemaAdmin)

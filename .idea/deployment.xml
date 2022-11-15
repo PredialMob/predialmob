@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="predialmob" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="predialmob" uploadOnCheckin="45cc255f-deb5-4459-abce-97ec95fa65dd" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="predialmob">
         <serverdata>
@@ -35,5 +35,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="predialmob" />
   </component>
 </project>

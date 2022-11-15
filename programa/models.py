@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext as _
 
-from core.models import PmModelEdificio, DescricaoMixin
+from core.models import PmModel, PmModelEdificio, DescricaoMixin
 
 
 class ProgramaMixin(models.Model):
@@ -14,11 +14,12 @@ class ProgramaMixin(models.Model):
 
 
 class Manutencao(ProgramaMixin, PmModelEdificio):
-    sistema_edificio = models.ForeignKey(to='edificio.EdificioSistemas', to_field='sid', on_delete=models.CASCADE)
-    procedimento = models.ForeignKey(to='sistema.Procedimento', on_delete=models.CASCADE)
+    edificio_procedimento = models.ForeignKey(
+        to='edificio.EdificioProcedimento', to_field='sid', on_delete=models.CASCADE,
+    )
 
     def __str__(self):
-        return self.procedimento.descricao + ' ' + str(self.indice)
+        return self.edificio_procedimento.procedimento.descricao + ' ' + str(self.indice)
 
     class Meta:
         verbose_name = _('manutenção')
@@ -27,9 +28,12 @@ class Manutencao(ProgramaMixin, PmModelEdificio):
 
 class ManutencaoLog(ProgramaMixin, PmModelEdificio):
     usuario = models.ForeignKey(to='core.Usuario', to_field='sid', on_delete=models.DO_NOTHING)
-    manutencao = models.ForeignKey(to='Manutencao', to_field='sid', on_delete=models.CASCADE, verbose_name=_('manutenção'))
+    manutencao = models.ForeignKey(
+        to='Manutencao', to_field='sid', on_delete=models.CASCADE, verbose_name=_('manutenção'),
+    )
     indice = models.PositiveIntegerField()
     notas = models.TextField()
+    data = models.DateTimeField()
 
     class Meta:
         verbose_name = _('log de manutenção')
